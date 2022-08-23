@@ -1,6 +1,5 @@
 <template>
     <ul class='list'>
-
         <!-- <li class='list_item'>
             <input type="checkbox" id="list_itme_1"/>
             <label for='list_item_1'>
@@ -42,10 +41,7 @@ export default {
                 
             ]
         }
-    },    
-    beforeUpdate(){
-        this.doAdd();
-    },        
+    },           
     methods : {
         doAdd : function(){
             var max = this.TaskList.reduce(function(a,b){
@@ -56,7 +52,6 @@ export default {
             })
         },
         deleteList : function(index){
-            // console.log("index : "+index)
             this.TaskList.splice(index, 1)
         }
     }
