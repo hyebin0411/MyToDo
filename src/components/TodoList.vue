@@ -35,6 +35,7 @@ export default {
     props : ['p_content', 'p_date'],
     data : function(){
         return{
+            delete : false,
             TaskList : [
                 {id : 1, check : false,  content : "Hey Boy!", date:"8/16 Tue."},
                 {id : 2, check : false,  content : "Hello", date:"8/16 Tue."},
@@ -44,9 +45,11 @@ export default {
         }
     },    
     beforeUpdate(){
-        this.doAdd();
+        if(this.delete == false){
+            this.doAdd();
+        }else{this.delete=true}
     },        
-    methods : {
+    methods : { 
         doAdd : function(){
             var max = this.TaskList.reduce(function(a,b){
                 return a>b.id ? a:b.id
@@ -57,6 +60,7 @@ export default {
         },
         deleteList : function(index){
             // console.log("index : "+index)
+            this.delete = true;
             this.TaskList.splice(index, 1)
         }
     }
