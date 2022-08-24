@@ -1,7 +1,14 @@
 <template>
     <div id="app" class="input">
-        <input type="text" v-model="InputContent" placeholder="당근을 추가해보세요. . ."/>
-        <button class="list_add" v-on:click="sendDo">당근 더하기</button>
+        <!-- <input type="text" v-model="InputContent" placeholder="당근을 추가해보세요. . ."/>
+        <b-button class="list_add" v-on:click="sendDo" variant="outline-primary">당근 더하기</b-button> -->
+
+        <b-input-group class="mt-3">
+            <b-form-input type="text" class="list_search" v-model="InputContent" placeholder="당근을 추가해보세요. . ."/>
+            <b-input-group-append>
+                <b-button class="list_add" v-on:click="sendDo" variant="outline-primary">당근 더하기</b-button>
+            </b-input-group-append>
+    </b-input-group>
     </div>
 </template>
 
@@ -34,7 +41,7 @@ export default {
 </script>
 
 <style>
-.list_add{
-    height: 37px;
+.list_add, .list_search{
+    height: 40px;
 }
 </style>

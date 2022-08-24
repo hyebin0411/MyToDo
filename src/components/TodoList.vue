@@ -15,7 +15,8 @@
         </li> -->
 
         <li class="list_item" v-for="(item, index) in TaskList" v-bind:key="item.id">
-            <input type="checkbox" id="list_item_check"/>
+            <!-- <input type="checkbox" id="list_item_check"/> -->
+            <b-form-checkbox id="list_item_check"></b-form-checkbox>
 
             <label for="list_item_check">
                 <p class="list_item_content">{{ item.content }}</p>
@@ -25,7 +26,7 @@
 
             <p>item.id : {{item.id}}</p>
 
-            <button class="list_item_delete" v-on:click="deleteList(index)">delete</button>
+            <b-button class="list_item_delete" v-on:click="deleteList(index)" variant="outline-danger">delete</b-button>
         </li>
     </ul>
 </template>
@@ -60,7 +61,12 @@ export default {
     },
     beforeUpdate(){
         console.log("\n===============beforeUpdate...ing===================")
-        if(this.notdelete){
+
+        if(this.p_content == ""){
+            alert("공백은 당근이 될 수 없습니다")
+        }
+
+        if(this.notdelete && this.p_content != ""){
             this.doAdd();
             console.log("-----------------doAdd()...ed--------------------------")
         }
@@ -91,8 +97,15 @@ export default {
 </script>
 
 <style>
+.list{
+    margin-top: 20px;
+}
 .list_item{
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+}
+.list_item_delete{
+    height: 32px;
 }
 </style>

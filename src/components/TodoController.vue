@@ -1,14 +1,14 @@
 <template>
     <div class="controller">
         <div id="app" class="controll">
-            <label for="list_order">Order</label>
-            <select name="list_order" id="list_order" class="selectbox">
+            <!-- <label for="list_order">Order</label> -->
+            <b-form-select name="list_order" id="list_order" size="sm" class="mt-3">
                 <option value="list_latest">latest</option>
                 <option value="list_name">name order</option>
                 <option value="list_heart">heart order</option>
-            </select>
+            </b-form-select>
         </div>
-        <button class="list_delete">당근 다 지우기</button>
+        <b-button class="list_delete" variant="danger">당근 다 지우기</b-button>
     </div>
 </template>
 
@@ -29,14 +29,10 @@ export default {
     /* background-color:lightgray; */
 
 }
-.controll{
-
-}
-
-.selectbox{
-
+.mt-3, .list_delete{
+    height : 40px
 }
 .list_delete{
-
+    margin-top: 15px;
 }
 </style>
