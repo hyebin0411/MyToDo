@@ -27,6 +27,7 @@ export default {
         sendDo : function(){
             console.log('sendDo : '+"   "+this.InputContent+"   "+this.InputDate)
             this.$emit('newTask', this.InputContent, this.InputDate)
+            console.log("-----------------sendDo()...ed--------------------------\n")
         }
     }
 }

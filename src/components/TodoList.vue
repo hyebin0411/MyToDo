@@ -35,7 +35,8 @@ export default {
     props : ['p_content', 'p_date'],
     data : function(){
         return{
-            delete : false,
+            arr : [],
+            notdelete : true,
             TaskList : [
                 {id : 1, check : false,  content : "Hey Boy!", date:"8/16 Tue."},
                 {id : 2, check : false,  content : "Hello", date:"8/16 Tue."},
@@ -43,25 +44,47 @@ export default {
                 
             ]
         }
-    },    
+    },
+    beforeCreate(){
+        console.log("beforeCreate")
+    },
+    created(){
+        console.log("created")
+    },
+    beforeMount(){
+        console.log("beforeMount")
+    }
+    ,
+    mounted(){
+        console.log("mounted")
+    },
     beforeUpdate(){
-        if(this.delete == false){
+        console.log("\n===============beforeUpdate...ing===================")
+        if(this.notdelete){
             this.doAdd();
-        }else{this.delete=true}
-    },        
+            console.log("-----------------doAdd()...ed--------------------------")
+        }
+        this.notdelete = true;
+    },
+    updated(){
+        console.log("\n===============updated...ing===================\n")
+    },  
     methods : { 
         doAdd : function(){
+            console.log("\n-----------------doAdd()...ing1--------------------------")
             var max = this.TaskList.reduce(function(a,b){
                 return a>b.id ? a:b.id
             }, 0)
+            console.log("-----------------doAdd()...ing2--------------------------")
             this.TaskList.push({
                 id : max+1, check : false, content : this.p_content, date : this.p_date
             })
+            console.log("-----------------doAdd()...ing3--------------------------\n")
         },
         deleteList : function(index){
             // console.log("index : "+index)
-            this.delete = true;
-            this.TaskList.splice(index, 1)
+            this.TaskList.splice(index, 1);
+            this.notdelete = false;
         }
     }
 }

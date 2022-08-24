@@ -6,9 +6,7 @@
         <TodoController />
         <TodoList 
             v-bind:p_content="content" 
-            v-bind:p_date="date"
-            ref="AppVue"></TodoList>
-
+            v-bind:p_date="date"></TodoList>
     </div>
 </template>
 
@@ -27,6 +25,12 @@ export default {
             date : ""
         }
     },
+    // beforeUpdate(){
+    //     alert("beforeUpdate")
+    // },
+    // updated(){
+    //     alert("updated")
+    // },
     components : {
         TodoHeader,
         TodoInput,
@@ -36,7 +40,6 @@ export default {
     },
     methods : {
         send_Do : function (content, date){
-            this.$refs.AppVue.doAdd();
             console.log('send__Do : '+"   "+content+"   "+date)
             this.content = content;
             this.date = date;
@@ -46,7 +49,6 @@ export default {
 </script>
 
 <style>
-
 body {
     text-align: center;
     background-color: #F6F6F6;
