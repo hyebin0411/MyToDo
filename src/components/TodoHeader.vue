@@ -39,14 +39,15 @@ export default {
 
 .header__logo {
     font-family: 'OKCHAN';
-    font-size: 30px;
+    font-size: 20px;
     color:cornflowerblue;
-    margin-top: 35px;
+    margin-top: 12px;
 }
 
 .header__date{
     font-family: 'OKCHAN';
-    font-size: 30px;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .header{

@@ -7,7 +7,6 @@
         <TodoList 
             v-bind:p_content="content" 
             v-bind:p_date="date"></TodoList>
-
     </div>
 </template>
 
@@ -26,6 +25,12 @@ export default {
             date : ""
         }
     },
+    // beforeUpdate(){
+    //     alert("beforeUpdate")
+    // },
+    // updated(){
+    //     alert("updated")
+    // },
     components : {
         TodoHeader,
         TodoInput,

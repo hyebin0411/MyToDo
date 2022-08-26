@@ -22,7 +22,8 @@ export default {
 
 <style lang="scss">
 .title{
-
+    margin-left: 20px;
+    margin-top: 10px;
     &__count { 
         font-size : 1.6rem;
         &-task {
