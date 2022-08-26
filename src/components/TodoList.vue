@@ -1,6 +1,5 @@
 <template>
     <ul class='list'>
-
         <!-- <li class='list_item'>
             <input type="checkbox" id="list_itme_1"/>
             <label for='list_item_1'>
@@ -74,8 +73,8 @@ export default {
     },
     updated(){
         console.log("\n===============updated...ing===================\n")
-    },  
-    methods : { 
+    },          
+    methods : {
         doAdd : function(){
             console.log("\n-----------------doAdd()...ing1--------------------------")
             var max = this.TaskList.reduce(function(a,b){
