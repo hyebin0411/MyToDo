@@ -8,12 +8,18 @@
                 <option value="list_heart">heart order</option>
             </b-form-select>
         </div>
-        <b-button class="list_delete" variant="danger">당근 다 지우기</b-button>
+        <b-button class="list_delete" variant="danger" v-on:click="ListAllClean">당근 다 지우기</b-button>
     </div>
 </template>
 
 <script>
+// import { eventBus } from "@/main"
 export default {
+    methods : {
+        ListAllClean : function(){
+            // eventBus.$emit('AllCleanBtnClicked');
+        }
+    }
 
 }
 </script>

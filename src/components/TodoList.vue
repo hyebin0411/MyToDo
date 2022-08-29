@@ -15,7 +15,11 @@
 
         <li class="list_item" v-for="(item, index) in TaskList" v-bind:key="item.id">
             <!-- <input type="checkbox" id="list_item_check"/> -->
-            <b-form-checkbox id="list_item_check"></b-form-checkbox>
+            <b-form-checkbox 
+                id="list_item_check" 
+                v-bind:value="item.id" 
+                v-model="val" 
+                @change="getcheckbox($event)"></b-form-checkbox>
 
             <label for="list_item_check">
                 <p class="list_item_content">{{ item.content }}</p>
@@ -31,12 +35,14 @@
 </template>
 
 <script>
+// import { eventBus } from "@/main"
 export default {
     props : ['p_content', 'p_date'],
     data : function(){
         return{
-            arr : [],
+            val : [],
             notdelete : true,
+            notchecked : true,
             TaskList : [
                 {id : 1, check : false,  content : "Hey Boy!", date:"8/16 Tue."},
                 {id : 2, check : false,  content : "Hello", date:"8/16 Tue."},
@@ -50,6 +56,9 @@ export default {
     },
     created(){
         console.log("created")
+        // eventBus.$on('AllCleanBtnClicked', function(){
+        //     self.allCleanBtnClick()
+        // });
     },
     beforeMount(){
         console.log("beforeMount")
@@ -60,8 +69,8 @@ export default {
     },
     beforeUpdate(){
         console.log("\n===============beforeUpdate...ing===================")
-
-        if(this.p_content == ""){
+        console.log("checked : "+this.notchecked+"  delete : "+this.notdelete)
+        if(this.p_content == "" && this.notdelete){
             alert("공백은 당근이 될 수 없습니다")
         }
 
@@ -73,23 +82,31 @@ export default {
     },
     updated(){
         console.log("\n===============updated...ing===================\n")
-    },          
-    methods : {
+        console.log(this.val + "\n")
+    },  
+    methods : { 
         doAdd : function(){
             console.log("\n-----------------doAdd()...ing1--------------------------")
             var max = this.TaskList.reduce(function(a,b){
                 return a>b.id ? a:b.id
             }, 0)
-            console.log("-----------------doAdd()...ing2--------------------------")
             this.TaskList.push({
                 id : max+1, check : false, content : this.p_content, date : this.p_date
             })
-            console.log("-----------------doAdd()...ing3--------------------------\n")
+            console.log("-----------------doAdd()...ing2--------------------------\n")
         },
         deleteList : function(index){
             // console.log("index : "+index)
             this.TaskList.splice(index, 1);
             this.notdelete = false;
+        },
+        getcheckbox : function(e){
+            this.notdelete = false;
+            // this.notchecked = false;
+            console.log("getcheckbox start"+e)
+        },
+        allCleanBtnClick : function(){
+            this.TaskList = [];
         }
     }
 }
