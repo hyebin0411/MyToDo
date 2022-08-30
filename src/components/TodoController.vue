@@ -13,11 +13,10 @@
 </template>
 
 <script>
-// import { eventBus } from "@/main"
 export default {
     methods : {
         ListAllClean : function(){
-            // eventBus.$emit('AllCleanBtnClicked');
+            this.$emit('AllCleanBtnClicked')
         }
     }
 

@@ -4,7 +4,7 @@
         <b-button class="list_add" v-on:click="sendDo" variant="outline-primary">당근 더하기</b-button> -->
 
         <b-input-group class="mt-3">
-            <b-form-input type="text" class="list_search" v-model="InputContent" placeholder="당근을 추가해보세요. . ."/>
+            <b-form-input type="text" class="list_search" v-model="InputContent" v-on:keyup.enter=sendDo placeholder="당근을 추가해보세요. . ."/>
             <b-input-group-append>
                 <b-button class="list_add" v-on:click="sendDo" variant="outline-primary">당근 더하기</b-button>
             </b-input-group-append>

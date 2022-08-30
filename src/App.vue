@@ -1,12 +1,14 @@
 <template>
     <div id="app">
         <TodoHeader />
-        <TodoTitle />
+        <TodoTitle v-bind:list_length="list_length"/>
         <TodoInput v-on:newTask="send_Do"></TodoInput>
-        <TodoController />
+        <TodoController v-on:AllCleanBtnClicked="send_allCleanEvent"/>
         <TodoList 
             v-bind:p_content="content" 
-            v-bind:p_date="date"></TodoList>
+            v-bind:p_date="date"
+            v-bind:listAllClean="listAllClean"
+            v-on:listlength="Send_length"></TodoList>
     </div>
 </template>
 
@@ -23,7 +25,9 @@ export default {
     data : function(){
         return{
             content : "", 
-            date : ""
+            date : "",
+            listAllClean : false,
+            list_length : 0
         }
     },
     // beforeUpdate(){
@@ -41,9 +45,16 @@ export default {
     },
     methods : {
         send_Do : function (content, date){
-            console.log('send__Do : '+"   "+content+"   "+date)
+            console.log('App.send__Do : '+"   "+content+"   "+date)
             this.content = content;
             this.date = date;
+        },
+        send_allCleanEvent : function(){
+            this.listAllClean = !this.listAllClean;
+        },
+        Send_length : function(list_length){
+            this.list_length = list_length;
+            console.log("App.Send_length : "+this.list_length)
         }
     }
 };
