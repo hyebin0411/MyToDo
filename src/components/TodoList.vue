@@ -22,7 +22,9 @@
                 @change="getcheckbox($event)"></b-form-checkbox>
 
             <label for="list_item_check">
-                <p class="list_item_content">{{ item.content }}</p>
+                <!-- <p class="list_item_content">{{ item.content }}</p> -->
+                <p v-if="font_no" class="list_item_content">{{ item.content }}</p>
+                <p v-else>{{ item.content }}</p>
             </label>
 
             <p class="list_item_date">{{ item.date }}</p>
@@ -35,14 +37,27 @@
 </template>
 
 <script>
-// import { eventBus } from "@/main"
 export default {
-    props : ['p_content', 'p_date'],
+    props : ['p_content', 'p_date', 'listAllClean'],
+    watch : {
+        listAllClean(){
+            this.TaskList = [];
+            console.log("watch : listAllClean start")
+            this.notdelete = false;
+        },
+        TaskList : {
+            handler() {
+                this.$emit('listlength', this.TaskList.length)
+                console.log("List.watch : TaskList() "+this.TaskList.length)
+            },
+            deep: true
+        }
+    },
     data : function(){
         return{
             val : [],
             notdelete : true,
-            notchecked : true,
+            font_no : false,
             TaskList : [
                 {id : 1, check : false,  content : "Hey Boy!", date:"8/16 Tue."},
                 {id : 2, check : false,  content : "Hello", date:"8/16 Tue."},
@@ -56,9 +71,9 @@ export default {
     },
     created(){
         console.log("created")
-        // eventBus.$on('AllCleanBtnClicked', function(){
-        //     self.allCleanBtnClick()
-        // });
+        console.log("List.created : TaskList() "+this.TaskList.length)
+        console.log("List.created : TaskList "+JSON.stringify(this.TaskList))
+        this.$emit('listlength', this.TaskList.length)
     },
     beforeMount(){
         console.log("beforeMount")
@@ -69,16 +84,19 @@ export default {
     },
     beforeUpdate(){
         console.log("\n===============beforeUpdate...ing===================")
-        console.log("checked : "+this.notchecked+"  delete : "+this.notdelete)
+        console.log("delete : "+this.notdelete)
         if(this.p_content == "" && this.notdelete){
             alert("공백은 당근이 될 수 없습니다")
         }
 
         if(this.notdelete && this.p_content != ""){
             this.doAdd();
-            console.log("-----------------doAdd()...ed--------------------------")
+            console.log("-----------------doAdd()...end--------------------------")
         }
         this.notdelete = true;
+        console.log("font_no : " +this.font_no)
+        this.font_no = false;
+        console.log("trans_font_no : " +this.font_no)
     },
     updated(){
         console.log("\n===============updated...ing===================\n")
@@ -86,27 +104,25 @@ export default {
     },  
     methods : { 
         doAdd : function(){
-            console.log("\n-----------------doAdd()...ing1--------------------------")
+            console.log("\n-----------------doAdd()...start--------------------------")
             var max = this.TaskList.reduce(function(a,b){
                 return a>b.id ? a:b.id
             }, 0)
             this.TaskList.push({
                 id : max+1, check : false, content : this.p_content, date : this.p_date
             })
-            console.log("-----------------doAdd()...ing2--------------------------\n")
+            //console.log("TaskList_length "+this.TaskList.length)
         },
         deleteList : function(index){
-            // console.log("index : "+index)
             this.TaskList.splice(index, 1);
+            //console.log("TaskList_length "+this.TaskList.length)
             this.notdelete = false;
         },
         getcheckbox : function(e){
             this.notdelete = false;
-            // this.notchecked = false;
+            this.font_no = true;
             console.log("getcheckbox start"+e)
-        },
-        allCleanBtnClick : function(){
-            this.TaskList = [];
+            console.log("font_no : " +this.font_no)
         }
     }
 }
@@ -123,5 +139,8 @@ export default {
 }
 .list_item_delete{
     height: 32px;
+}
+.list_item_content{
+    text-decoration: line-through;
 }
 </style>

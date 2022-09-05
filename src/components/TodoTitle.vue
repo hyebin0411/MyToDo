@@ -11,6 +11,12 @@
 
 <script>
 export default {
+    props : ['list_length'],
+    watch : {
+        list_length(){
+            this.task_count = this.list_length
+        }
+    },
     data(){
         return{
             task_count : 0,
