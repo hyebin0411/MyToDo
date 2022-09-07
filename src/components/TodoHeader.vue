@@ -51,9 +51,10 @@ export default {
 }
 
 .header{
-    background-color:lightgray;
+    background-color:whitesmoke;
     display: flex;
     justify-content: space-between;
+    height : 60px;
 } 
 
 @font-face {
