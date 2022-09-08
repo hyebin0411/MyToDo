@@ -22,11 +22,15 @@
 import { createRouter, createWebHistory } from 'vue-router';    
 import HomePage from './pages/HomePage';
 import MonthPage from './pages/MonthPage'
+import SidePage from './pages/SidePage'
+
 const route = [
     {path: "/", component: HomePage},
-    {path: "/HHome ", component: HomePage},
-    {path: "/month", component: MonthPage}
+    {path: "/home", component: HomePage},
+    {path: "/month", component: MonthPage},
+    {path: "/side", component: SidePage}
 ];
+
 export default new createRouter({    
     history: createWebHistory(),
     routes: route,
