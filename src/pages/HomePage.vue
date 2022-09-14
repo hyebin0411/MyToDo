@@ -1,6 +1,7 @@
 <template>
     <div>
         <TodoHeader />
+        <TodoNavbar />
         <TodoTitle v-bind:list_length="list_length"/>
         <TodoInput v-on:newTask="send_Do"></TodoInput>
         <TodoController v-on:AllCleanBtnClicked="send_allCleanEvent"/>
@@ -14,11 +15,11 @@
 
 <script>
 import  TodoHeader from "../components/TodoHeader.vue"
+import  TodoNavbar from '@/components/TodoNavbar.vue';
 import  TodoController from "../components/TodoController";
 import  TodoInput from "../components/TodoInput";
 import  TodoTitle from "../components/TodoTitle";
 import  TodoList from "../components/TodoList";
-
 
 export default {
     data : function(){
@@ -40,7 +41,8 @@ export default {
         TodoInput,
         TodoController,
         TodoTitle,
-        TodoList
+        TodoList,
+        TodoNavbar
     },
     methods : {
         send_Do : function (content, date){

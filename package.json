@@ -42,7 +42,7 @@
     },
     "rules": {},
     "globals": {
-      "todoEventBus" : "readonly"
+      "todoEventBus": "readonly"
     }
   },
   "browserslist": [
