@@ -10,6 +10,8 @@
 
         <TodoList /> <!--임시 리스트-->
 
+        <TodoInput />
+
         <TodoTodayTitle />
 
         <TodoList />
@@ -22,9 +24,10 @@ import TodoNavbar from '@/components/TodoNavbar.vue';
 import TodoList from '@/components/TodoList.vue';
 import TodoTodayTitle from '@/components/TodoTodayTask/TodoTodayTitle.vue';
 import TodoEverydayTitle from '@/components/TodoEverydayTask/TodoEverydayTitle.vue';
+import TodoInput from '@/components/TodoInput.vue';
 
 export default {
-    components: { TodoHeader, TodoNavbar, TodoList, TodoTodayTitle, TodoEverydayTitle  },
+    components: { TodoHeader, TodoNavbar, TodoList, TodoTodayTitle, TodoEverydayTitle, TodoInput },
     methods : {
         ClickIcon : function(){
             console.log('ClickIcon() :: ');
