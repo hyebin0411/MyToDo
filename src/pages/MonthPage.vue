@@ -10,14 +10,15 @@
 
         <TodoList /> <!--임시 리스트-->
 
-        <TodoInput />
+        <TodoInput /> <!--임시 리스트 추가 -->
 
         <TodoTodayTitle />
 
         <TodoList />
+
+        <TodoInput /> <!--임시 리스트 추가 -->
     </div>
 </template>
-
 <script>
 import TodoHeader from '@/components/TodoHeader.vue';
 import TodoNavbar from '@/components/TodoNavbar.vue';
