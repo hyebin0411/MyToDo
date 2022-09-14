@@ -27,7 +27,9 @@ export default {
 .controller{
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
     /* margin-left: 50px;
     margin-right: 50px; */
     /* background-color:lightgray; */
