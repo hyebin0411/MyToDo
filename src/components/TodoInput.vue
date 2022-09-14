@@ -44,4 +44,9 @@ export default {
 .list_add, .list_search{
     height: 40px;
 }
+.input{
+    margin-top: 40px;
+    width: 90%;
+    margin: 0 auto;
+}
 </style>
