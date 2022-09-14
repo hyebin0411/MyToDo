@@ -1,6 +1,23 @@
 <template>
-    <ul class='list'>
-        <!-- <li class='list_item'>
+    <div class="first-div">
+        <b-list-group class='list_group'>
+            <b-list-group-item class='list_item' style="display: flex;" v-for="(item, index) in TaskList" v-bind:key="item.id">
+                <b-form-checkbox 
+                    id="list_item_check" 
+                    v-bind:value="item.id" 
+                    v-model="val" 
+                    @change="getcheckbox($event)"></b-form-checkbox>
+                <label for="list_item_check">
+                    <p v-if="font_no" class="list_item_content">{{ item.content }}</p>
+                    <p v-else>{{ item.content }}</p>
+                </label>
+                <p class="list_item_date">{{ item.date }}</p>
+                <p>item.id : {{item.id}}</p>
+                <b-button class="list_item_delete" v-on:click="deleteList(index)" variant="outline-danger">delete</b-button>
+            </b-list-group-item>
+        </b-list-group>
+    </div>
+    <!-- <li class='list_item'>
             <input type="checkbox" id="list_itme_1"/>
             <label for='list_item_1'>
                 <p class='list_text'>Hello Boy</p>
@@ -12,28 +29,6 @@
         <!-- <li v-for="item in TaskList" v-bind:key="item.id">
             ID . {{ item.id }} content . {{ item.content }} date . {{ item.date }}
         </li> -->
-
-        <li class="list_item" v-for="(item, index) in TaskList" v-bind:key="item.id">
-            <!-- <input type="checkbox" id="list_item_check"/> -->
-            <b-form-checkbox 
-                id="list_item_check" 
-                v-bind:value="item.id" 
-                v-model="val" 
-                @change="getcheckbox($event)"></b-form-checkbox>
-
-            <label for="list_item_check">
-                <!-- <p class="list_item_content">{{ item.content }}</p> -->
-                <p v-if="font_no" class="list_item_content">{{ item.content }}</p>
-                <p v-else>{{ item.content }}</p>
-            </label>
-
-            <p class="list_item_date">{{ item.date }}</p>
-
-            <p>item.id : {{item.id}}</p>
-
-            <b-button class="list_item_delete" v-on:click="deleteList(index)" variant="outline-danger">delete</b-button>
-        </li>
-    </ul>
 </template>
 
 <script>
@@ -129,7 +124,7 @@ export default {
 </script>
 
 <style>
-.list{
+/* .list{
     margin-top: 20px;
 }
 .list_item{
@@ -142,5 +137,16 @@ export default {
 }
 .list_item_content{
     text-decoration: line-through;
+} */
+.first-div{
+    margin-top: 30px;
+}
+.list_group{ 
+    width: 90%;
+    margin: 0 auto;
+}
+.list_item{
+    justify-content: space-between;
+    margin-top: 0px;
 }
 </style>
