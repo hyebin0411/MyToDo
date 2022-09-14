@@ -51,7 +51,7 @@ export default {
 }
 
 .header{
-    background-color:whitesmoke;
+    background-color: #DCDCDC;//whitesmoke;
     display: flex;
     justify-content: space-between;
     height : 60px;

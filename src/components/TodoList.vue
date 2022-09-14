@@ -139,7 +139,7 @@ export default {
     text-decoration: line-through;
 } */
 .first-div{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .list_group{ 
     width: 90%;
