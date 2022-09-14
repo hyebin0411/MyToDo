@@ -20,7 +20,7 @@ export default {
     data(){
         return{
             task_count : 0,
-            task_name : "당근"
+            task_name : "오늘당근"
         }
     }
 }
