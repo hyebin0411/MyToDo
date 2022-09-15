@@ -110,8 +110,9 @@ export default {
         },
         deleteList : function(index){
             this.TaskList.splice(index, 1);
-            //console.log("TaskList_length "+this.TaskList.length)
             this.notdelete = false;
+            this.$forceUpdate();
+            console.log("deleteList start")
         },
         getcheckbox : function(e){
             this.notdelete = false;
