@@ -109,10 +109,15 @@ export default {
             //console.log("TaskList_length "+this.TaskList.length)
         },
         deleteList : function(index){
+            // this.$nextTick(function(){
+            //     this.TaskList.splice(index, 1);
+            //     this.notdelete = false;
+            //     console.log("deleteList tick end")
+            // }); //이 코드는 내가 원하는 동작을 하지 않음!
             this.TaskList.splice(index, 1);
             this.notdelete = false;
             this.$forceUpdate();
-            console.log("deleteList start")
+            console.log("deleteList end")
         },
         getcheckbox : function(e){
             this.notdelete = false;
