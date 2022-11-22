@@ -33,6 +33,11 @@
                             <i class="bi bi-gear-fill" style="color: black"> setting</i>
                         </li>
                     </router-link>
+                    <router-link to="/etc">
+                        <li class="list-group-item list-group-item-action">
+                            <i class="bi bi-balloon" style="color: black"> etc</i>
+                        </li>
+                    </router-link>
                     <!-- <li class="list-group-item list-group-item-action">
                         <router-link to="/month">
                             <i class="bi bi-calendar-fill" style="color: black"> month</i>
